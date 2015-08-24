@@ -3,12 +3,12 @@ import sys
 print "Welcome to my address book"
 
 #class contact:
-def __init__(self,firstName,lastName,phone,email,address):
-      self.firstName = firstName
-      self.lastName = lastName
-      self.phone = phone
-      self.email = email
-      self.address = address
+#def __init__(self,firstName,lastName,phone,email,address):
+#      self.firstName = firstName
+#      self.lastName = lastName
+#      self.phone = phone
+#      self.email = email
+#      self.address = address
 
 def collectContact():
       firstName = raw_input("What is the contacts first name?")
@@ -17,13 +17,13 @@ def collectContact():
       email = raw_input("What is the contacts email?")
       address = raw_input("What is the contacts address?")
 
-      contactInfo = (firstName + " " + lastName + "," + phone + "," + email + "," + address) 
+      contactInfo = (firstName + " " + lastName + " | " + phone + " | " + email + " | " + address) 
 
       append_to_database(contactInfo)
 
 #class addressBook:
 def append_to_database(contactInfo):
-      addressbook1 = open("addressbook.txt" , "a")
+      addressbook1 = open("addressbook.txt","a")
       addressbook1.write(contactInfo)
       addressbook1.write("\n")
       addressbook1.close()
@@ -43,11 +43,13 @@ def search_database():
 
 #class startMenu:
 def menu():
-      startProgram = raw_input("Are you creating an entry or searching for an entry? Enter creating or searching")
-      if startProgram == "creating":
+      startProgram = raw_input("Are you creating an entry or searching for an entry? \nEnter 1 for creating or 2 for searching or 3 to quit"\n)
+      if startProgram == "1":
            collectContact()
-      elif startProgram == "searching":
+      elif startProgram == "2":
            search_database()
+      elif startProgram == "3":
+            exit()
       else:
             print str(startProgram) + " is not a valid option. You need to try again"
             menu()
